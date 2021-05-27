@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const HelloWorld: React.FC = (): ReactElement => {
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
 
   return (
     <>
@@ -19,9 +19,6 @@ const HelloWorld: React.FC = (): ReactElement => {
       </p>
       <p>
         process.env.VERSION: <b>{process.env.VERSION}</b>
-      </p>
-      <p>
-        Full state: <b>{JSON.stringify(state)}</b>
       </p>
     </>
   );

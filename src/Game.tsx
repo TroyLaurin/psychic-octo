@@ -1,14 +1,16 @@
 import React, { Component, ReactElement } from "react";
-import HelloWorld from "components/HelloWorld";
 import { createStore } from "redux-dynamic-modules-core";
 import { getSagaExtension } from "redux-dynamic-modules-saga";
 import { Provider } from "react-redux";
 import { IModuleStore } from "redux-dynamic-modules";
 
-import { getCoreModule } from "./components/Core";
+import { CoreModule, CoreState } from "components/Core";
+import ElementsBoard, { LayerModule, LayersState } from "components/Layers";
+
+interface RootState extends CoreState, LayersState {}
 
 class Game extends Component {
-  store: IModuleStore<any>;
+  store: IModuleStore<RootState>;
   constructor(props) {
     super(props);
 
@@ -19,14 +21,15 @@ class Game extends Component {
         enhancers: [],
         extensions: [getSagaExtension()],
       },
-      getCoreModule(),
+      CoreModule,
+      LayerModule,
     );
   }
 
   render(): ReactElement {
     return (
       <Provider store={this.store}>
-        <HelloWorld />
+        <ElementsBoard />
       </Provider>
     );
   }
