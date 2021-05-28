@@ -6,6 +6,9 @@ import { IModuleStore } from "redux-dynamic-modules";
 
 import { CoreModule, CoreState } from "components/Core";
 import ElementsBoard, { LayerModule, LayersState } from "components/Layers";
+import Lore from "components/Core";
+
+import "./main.scss";
 
 interface RootState extends CoreState, LayersState {}
 
@@ -29,7 +32,10 @@ class Game extends Component {
   render(): ReactElement {
     return (
       <Provider store={this.store}>
-        <ElementsBoard />
+        <div className="main">
+          <ElementsBoard />
+        </div>
+        <Lore />
       </Provider>
     );
   }

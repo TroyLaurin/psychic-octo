@@ -9,6 +9,7 @@ interface GaugeProps {
   max?: number; // The maximum value for the gauge (100)
   label?: (value: number) => string; // Optional function that returns a string label that will be rendered in the center. This function will be passed the current value
   showValue?: boolean; // Whether to show the value at the center of the gauge (true)
+  className?: string; // The CSS class of the gauge container
   gaugeClass?: string; // The CSS class of the gauge (gauge)
   dialClass?: string; // The CSS class of the gauge's dial (dial)
   valueDialClass?: string; // The CSS class of the gauge's fill (value dial) (value)
@@ -41,7 +42,10 @@ export const Gauge = (props: GaugeProps) => {
 
   if (props.children) {
     return (
-      <div ref={gaugeEl} className="gauge-container">
+      <div
+        ref={gaugeEl}
+        className={"gauge-container " + (props.className || "")}
+      >
         <span className="inner">{props.children}</span>
       </div>
     );
